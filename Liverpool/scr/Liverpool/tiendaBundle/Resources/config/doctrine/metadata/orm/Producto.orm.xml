@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<doctrine-mapping xmlns="http://doctrine-project.org/schemas/orm/doctrine-mapping" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping http://doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
+  <entity name="Producto" table="producto">
+    <indexes>
+      <index name="idCategoria" columns="idCategoria"/>
+    </indexes>
+    <id name="idproducto" type="integer" column="idProducto">
+      <generator strategy="IDENTITY"/>
+    </id>
+    <field name="codigo" type="string" column="codigo" length="20" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="nombre" type="string" column="nombre" length="100" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="descripcion" type="text" column="descripcion" length="65535" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="imagen" type="text" column="imagen" length="16777215" nullable="true">
+      <options>
+        <option name="fixed"/>
+      </options>
+    </field>
+    <field name="preciocompra" type="float" column="precioCompra" precision="10" scale="0" nullable="true"/>
+    <field name="precioventa" type="float" column="precioVenta" precision="10" scale="0" nullable="true"/>
+    <field name="existencia" type="integer" column="existencia" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="stockminimo" type="integer" column="stockMinimo" nullable="true">
+      <options>
+        <option name="unsigned"/>
+      </options>
+    </field>
+    <field name="estado" type="integer" column="estado" nullable="true">
+      <options>
+        <option name="unsigned"/>
+        <option name="default">1</option>
+      </options>
+    </field>
+    <many-to-one field="idcategoria" target-entity="Categoria" fetch="LAZY">
+      <join-columns>
+        <join-column name="idCategoria" referenced-column-name="idCategoria"/>
+      </join-columns>
+    </many-to-one>
+  </entity>
+</doctrine-mapping>

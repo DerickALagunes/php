@@ -1,0 +1,24 @@
+empleado_index:
+    path:     /
+    defaults: { _controller: "LiverpooltiendaBundle:Empleado:index" }
+    methods:  GET
+
+empleado_show:
+    path:     /{id}/show
+    defaults: { _controller: "LiverpooltiendaBundle:Empleado:show" }
+    methods:  GET
+
+empleado_new:
+    path:     /new
+    defaults: { _controller: "LiverpooltiendaBundle:Empleado:new" }
+    methods:  [GET, POST]
+
+empleado_edit:
+    path:     /{id}/edit
+    defaults: { _controller: "LiverpooltiendaBundle:Empleado:edit" }
+    methods:  [GET, POST]
+
+empleado_delete:
+    path:     /{id}/delete
+    defaults: { _controller: "LiverpooltiendaBundle:Empleado:delete" }
+    methods:  DELETE

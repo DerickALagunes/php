@@ -1,0 +1,31 @@
+liverpooltienda_empleado:
+        resource: "@LiverpooltiendaBundle/Resources/config/routing/empleado.yml"
+        prefix:   /empleado
+
+liverpooltienda_departamento:
+    resource: "@LiverpooltiendaBundle/Resources/config/routing/departamento.yml"
+    prefix:   /departamento
+
+liverpooltienda_categoria:
+    resource: "@LiverpooltiendaBundle/Resources/config/routing/categoria.yml"
+    prefix:   /categoria
+
+liverpooltienda_homepage:
+    path:     /
+    defaults: { _controller: LiverpooltiendaBundle:Default:index }
+
+viewUser:
+    path:     /users
+    defaults: { _controller: LiverpooltiendaBundle:Usuario:usuario }
+    
+newUser:
+    path:     /createUser
+    defaults: { _controller: LiverpooltiendaBundle:Usuario:nuevoUsuario }
+    
+editUser:
+    path:     /editUser/{id}
+    defaults: { _controller: LiverpooltiendaBundle:Usuario:modificarUsuario }
+    
+removeUser:
+    path:     /removeUser/{id}
+    defaults: { _controller: LiverpooltiendaBundle:Usuario:eliminarUsuario }

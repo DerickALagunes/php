@@ -1,0 +1,20 @@
+<h1>Lista de usuarios</h1>
+
+<a href="{{path('newUser')}}">Nuevo</a>
+<br/>
+<br/>
+
+{% for row in result %}
+    <span>
+        <div>
+            <b>Nombre:</b>{{ row.usuario}}      <br/>
+        </div>
+        <div>
+            <a href="{{path('editUser',{'id':row.idUsuario})}}">Modificar</a>
+            <a href="{{path('removeUser',{'id':row.idUsuario})}}">Eliminar</a>
+        </div>
+    </span>
+    <br/>
+{% endfor %}
+
+<a href="{{path('liverpooltienda_homepage')}}">Home</a>

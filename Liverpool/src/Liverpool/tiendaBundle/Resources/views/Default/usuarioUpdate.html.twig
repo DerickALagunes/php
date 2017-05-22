@@ -1,0 +1,44 @@
+{{ form_start(formTWIG, {'method': 'POST'}) }}
+
+    <div class="form-group">
+        {{form_row (formTWIG.nombre,{'value':persona.nombre})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.apellidopaterno,{'value':persona.apellidopaterno})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.apellidomaterno,{'value':persona.apellidomaterno})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.fechanacimiento,{
+                'value':persona.fechanacimiento|date('Y-m-d')
+        })}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.direccion,{'value':persona.direccion})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.email,{'value':persona.email})}}
+    </div>
+    <div class="form-group">
+        <br />
+        <hr/>
+        <h4>Crea tu usuario:</h4>
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.usuario,{'value':user.usuario})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.contrasena,{'value':user.contrasena})}}
+    </div>
+    <div class="form-group">
+        
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.tipo,{'value':tipo.tipo})}}
+    </div>
+    <div class="form-group">
+        {{form_row (formTWIG.submit , {'label': var })}}
+    </div>
+
+{{form_end(formTWIG)}}
