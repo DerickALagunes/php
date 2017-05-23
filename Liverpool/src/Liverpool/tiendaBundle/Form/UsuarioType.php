@@ -26,8 +26,6 @@ class UsuarioType extends AbstractType {
                 ->add('usuario')
                 ->add('contrasena')
 
-                ->add('tipo')
-
                 ->add('submit', SubmitType::class, array(
                     'attr' => array('class' => 'btn')))
         ;

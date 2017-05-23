@@ -19,7 +19,7 @@ viewUser:
     defaults: { _controller: LiverpooltiendaBundle:Usuario:usuario }
     
 newUser:
-    path:     /createUser
+    path:     /createUser/{regAs}
     defaults: { _controller: LiverpooltiendaBundle:Usuario:nuevoUsuario }
     
 editUser:
@@ -29,3 +29,13 @@ editUser:
 removeUser:
     path:     /removeUser/{id}
     defaults: { _controller: LiverpooltiendaBundle:Usuario:eliminarUsuario }
+    
+login:
+    path:     /login
+    defaults: { _controller: LiverpooltiendaBundle:Security:login }
+    
+login_check:
+    path:   /login_check
+
+logout:
+    path: /logout

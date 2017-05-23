@@ -306,8 +306,8 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         }
 
         // newUser
-        if ($pathinfo === '/createUser') {
-            return array (  '_controller' => 'Liverpool\\tiendaBundle\\Controller\\UsuarioController::nuevoUsuarioAction',  '_route' => 'newUser',);
+        if (0 === strpos($pathinfo, '/createUser') && preg_match('#^/createUser/(?P<regAs>[^/]++)$#s', $pathinfo, $matches)) {
+            return $this->mergeDefaults(array_replace($matches, array('_route' => 'newUser')), array (  '_controller' => 'Liverpool\\tiendaBundle\\Controller\\UsuarioController::nuevoUsuarioAction',));
         }
 
         // editUser
@@ -318,6 +318,27 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
         // removeUser
         if (0 === strpos($pathinfo, '/removeUser') && preg_match('#^/removeUser/(?P<id>[^/]++)$#s', $pathinfo, $matches)) {
             return $this->mergeDefaults(array_replace($matches, array('_route' => 'removeUser')), array (  '_controller' => 'Liverpool\\tiendaBundle\\Controller\\UsuarioController::eliminarUsuarioAction',));
+        }
+
+        if (0 === strpos($pathinfo, '/log')) {
+            if (0 === strpos($pathinfo, '/login')) {
+                // login
+                if ($pathinfo === '/login') {
+                    return array (  '_controller' => 'Liverpool\\tiendaBundle\\Controller\\SecurityController::loginAction',  '_route' => 'login',);
+                }
+
+                // login_check
+                if ($pathinfo === '/login_check') {
+                    return array('_route' => 'login_check');
+                }
+
+            }
+
+            // logout
+            if ($pathinfo === '/logout') {
+                return array('_route' => 'logout');
+            }
+
         }
 
         // homepage

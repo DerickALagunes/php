@@ -18,7 +18,7 @@ class UsuarioController extends Controller {
         return $this->render('LiverpooltiendaBundle:Default:usuarioView.html.twig', array("result" => $res));
     }
 
-    public function nuevoUsuarioAction(Request $request) {
+    public function nuevoUsuarioAction($regAs, Request $request) {
         $person = new Persona();
         $user = new Usuario();
         $type = new Tipouser();
@@ -48,7 +48,7 @@ class UsuarioController extends Controller {
             $em->flush();
             
             $type->setIdpersona($person);
-            $type->setIdusuario($user);
+            $type->setIdusuario($regAs);
             $type->setTipo($data['tipo']);
             
             $em->persist($type);
