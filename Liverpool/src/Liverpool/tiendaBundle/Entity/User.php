@@ -3,14 +3,15 @@
 namespace Liverpool\tiendaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Security\Core\User\UserInterface;
 
 /**
  * Usuario
  *
  * @ORM\Table(name="usuario", indexes={@ORM\Index(name="idPersona", columns={"idPersona"})})
- * @ORM\Entity
+ * @ORM\Entity(repositoryClass="Liverpool\tiendaBundle\Repository\usuarioRepository")
  */
-class User
+class User implements UserInterface, \Serializable
 {
     /**
      * @var integer
@@ -127,5 +128,55 @@ class User
     public function getIdpersona()
     {
         return $this->idpersona;
+    }
+
+    public function getUsername()
+    {
+        return $this->usuario;
+    }
+
+    public function getSalt()
+    {
+        // you *may* need a real salt depending on your encoder
+        // see section on salt below
+        return null;
+    }
+
+    public function getPassword()
+    {
+        return $this->contrasena;
+    }
+
+    public function getRoles()
+    {
+        return array('ROLE_USER');
+    }
+
+    public function eraseCredentials()
+    {
+    }
+
+    /** @see \Serializable::serialize() */
+    public function serialize()
+    {
+        return serialize(array(
+            $this->idusuario,
+            $this->usuario,
+            $this->contrasena,
+            // see section on salt below
+            // $this->salt,
+        ));
+    }
+
+    /** @see \Serializable::unserialize() */
+    public function unserialize($serialized)
+    {
+        list (
+            $this->idusuario,
+            $this->usuario,
+            $this->contrasena,
+            // see section on salt below
+            // $this->salt
+        ) = unserialize($serialized);
     }
 }

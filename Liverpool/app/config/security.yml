@@ -6,6 +6,7 @@ security:
         
     role_hierarchy:
         ROLE_ADMIN: [ROLE_USER]
+        ROLE_USER:  [ROLE_CLIENT]
     
     providers:
         chain_provider:
@@ -39,4 +40,6 @@ security:
     access_control:
         - { path: /login, roles: IS_AUTHENTICATED_ANONYMOUSLY}
         - { path: /createUser*, roles: ROLE_ADMIN}
+        - { path: /editUser*, roles: ROLE_ADMIN}
+        - { path: /removeUser*, roles: ROLE_ADMIN}
         - { path: /.*, roles: IS_AUTHENTICATED_ANONYMOUSLY}

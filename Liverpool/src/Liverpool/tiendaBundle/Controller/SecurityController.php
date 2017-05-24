@@ -8,7 +8,8 @@ use Symfony\Component\HttpFoundation\Request;
 class SecurityController extends Controller {
 
     public function loginAction(Request $request) {
-        $session = $request->getSession();      
+        $session = $request->getSession();              
+        
         $authenticationUtils = $this->get('security.authentication_utils');
 
         // get the login error if there is one
