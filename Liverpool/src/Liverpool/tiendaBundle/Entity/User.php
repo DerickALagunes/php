@@ -4,6 +4,8 @@ namespace Liverpool\tiendaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Security\Core\User\UserInterface;
+use Doctrine\Common\Collections\ArrayCollection;
+use Liverpool\tiendaBundle\Entity\Tipouser;
 
 /**
  * Usuario
@@ -13,6 +15,33 @@ use Symfony\Component\Security\Core\User\UserInterface;
  */
 class User implements UserInterface, \Serializable
 {
+    private $carrito;
+    
+    public function newCarrito() {
+        $this->carrito = new ArrayCollection();
+    }
+    
+    public function getCarrito() {
+        return $this->carrito;
+    }
+    
+    public function setCarrito($carro) {
+        $this->carrito = $carro;
+    }
+    
+    
+    private $tipo;
+    
+    public function getTipo() {
+        return $this->carrito;
+    }
+    
+    public function setTipo(Tipouser $tipo) {
+        $this->tipo = $tipo;
+        return $this;
+    }
+    
+    
     /**
      * @var integer
      *

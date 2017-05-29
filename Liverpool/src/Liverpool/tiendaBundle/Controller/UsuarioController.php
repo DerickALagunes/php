@@ -9,8 +9,6 @@ use Liverpool\tiendaBundle\Entity\Usuario;
 use Liverpool\tiendaBundle\Entity\Tipouser;
 use Liverpool\tiendaBundle\Form\UsuarioType;
 
-
-
 class UsuarioController extends Controller {
 
     public function usuarioAction() {
